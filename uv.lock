@@ -310,6 +310,56 @@ wheels = [
 ]
 
 [[package]]
+name = "clinical-prescription-auditor"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "gcsfs" },
+    { name = "google-adk", extra = ["gcp"] },
+    { name = "google-cloud-logging" },
+    { name = "opentelemetry-instrumentation-google-genai" },
+]
+
+[package.optional-dependencies]
+eval = [
+    { name = "google-adk", extra = ["eval"] },
+    { name = "google-cloud-aiplatform", extra = ["evaluation"] },
+]
+lint = [
+    { name = "codespell" },
+    { name = "ruff" },
+    { name = "ty" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "nest-asyncio" },
+    { name = "pytest" },
+    { name = "pytest-asyncio" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "codespell", marker = "extra == 'lint'", specifier = ">=2.2.0,<3.0.0" },
+    { name = "gcsfs", specifier = ">=2024.11.0" },
+    { name = "google-adk", extras = ["eval"], marker = "extra == 'eval'", specifier = ">=2.0.0,<3.0.0" },
+    { name = "google-adk", extras = ["gcp"], specifier = ">=2.0.0,<3.0.0" },
+    { name = "google-cloud-aiplatform", extras = ["evaluation"], marker = "extra == 'eval'", specifier = ">=1.156.0" },
+    { name = "google-cloud-logging", specifier = ">=3.12.0,<4.0.0" },
+    { name = "opentelemetry-instrumentation-google-genai", specifier = ">=0.1.0,<1.0.0" },
+    { name = "ruff", marker = "extra == 'lint'", specifier = ">=0.4.6,<1.0.0" },
+    { name = "ty", marker = "extra == 'lint'", specifier = ">=0.0.1a0" },
+]
+provides-extras = ["eval", "lint"]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "nest-asyncio", specifier = ">=1.6.0,<2.0.0" },
+    { name = "pytest", specifier = ">=9.0.2,<10.0.0" },
+    { name = "pytest-asyncio", specifier = ">=1.0.0,<2.0.0" },
+]
+
+[[package]]
 name = "cloudpickle"
 version = "3.1.2"
 source = { registry = "https://pypi.org/simple" }
@@ -1490,56 +1540,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/19/74/a633ee74eb36c44aa6d1095e7cc5569bebf04342ee146178e2d36600708b/jsonschema_specifications-2025.9.1.tar.gz", hash = "sha256:b540987f239e745613c7a9176f3edb72b832a4ac465cf02712288397832b5e8d", size = 32855, upload-time = "2025-09-08T01:34:59.186Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/41/45/1a4ed80516f02155c51f51e8cedb3c1902296743db0bbc66608a0db2814f/jsonschema_specifications-2025.9.1-py3-none-any.whl", hash = "sha256:98802fee3a11ee76ecaca44429fda8a41bff98b00a0f2838151b113f210cc6fe", size = 18437, upload-time = "2025-09-08T01:34:57.871Z" },
-]
-
-[[package]]
-name = "kaggle-capstone"
-version = "0.1.0"
-source = { editable = "." }
-dependencies = [
-    { name = "gcsfs" },
-    { name = "google-adk", extra = ["gcp"] },
-    { name = "google-cloud-logging" },
-    { name = "opentelemetry-instrumentation-google-genai" },
-]
-
-[package.optional-dependencies]
-eval = [
-    { name = "google-adk", extra = ["eval"] },
-    { name = "google-cloud-aiplatform", extra = ["evaluation"] },
-]
-lint = [
-    { name = "codespell" },
-    { name = "ruff" },
-    { name = "ty" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "nest-asyncio" },
-    { name = "pytest" },
-    { name = "pytest-asyncio" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "codespell", marker = "extra == 'lint'", specifier = ">=2.2.0,<3.0.0" },
-    { name = "gcsfs", specifier = ">=2024.11.0" },
-    { name = "google-adk", extras = ["eval"], marker = "extra == 'eval'", specifier = ">=2.0.0,<3.0.0" },
-    { name = "google-adk", extras = ["gcp"], specifier = ">=2.0.0,<3.0.0" },
-    { name = "google-cloud-aiplatform", extras = ["evaluation"], marker = "extra == 'eval'", specifier = ">=1.156.0" },
-    { name = "google-cloud-logging", specifier = ">=3.12.0,<4.0.0" },
-    { name = "opentelemetry-instrumentation-google-genai", specifier = ">=0.1.0,<1.0.0" },
-    { name = "ruff", marker = "extra == 'lint'", specifier = ">=0.4.6,<1.0.0" },
-    { name = "ty", marker = "extra == 'lint'", specifier = ">=0.0.1a0" },
-]
-provides-extras = ["eval", "lint"]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "nest-asyncio", specifier = ">=1.6.0,<2.0.0" },
-    { name = "pytest", specifier = ">=9.0.2,<10.0.0" },
-    { name = "pytest-asyncio", specifier = ">=1.0.0,<2.0.0" },
 ]
 
 [[package]]
